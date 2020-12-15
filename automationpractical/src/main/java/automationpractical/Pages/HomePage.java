@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class HomePage extends BasePage{
 
+    //Page Objects
     By searchTextBox = By.id("search_query_top");
     By searchBtn = By.name("submit_search");
     By searchResult = By.xpath("(//div[contains(@class, 'right-block')])[1]");
@@ -23,32 +24,38 @@ public class HomePage extends BasePage{
         super(driver);
     }
 
+    //Set search text method
     private void setSearchText(String searchText){
         waitVisibility(searchTextBox);
         driver.findElement(searchTextBox).clear();
         driver.findElement(searchTextBox).sendKeys(searchText);
     }
 
+    //Click search button method
     private void clickSearchBtn(){
         waitVisibility(searchBtn);
         driver.findElement(searchBtn).click();
     }
 
+    //Searching method
     public void search(String searchText){
         this.setSearchText(searchText);
         this.clickSearchBtn();
     }
 
+    //Get search results method
     public String getSearchResults () {
         waitVisibility(searchResult);
         return driver.findElement(searchResult).getText();
     }
 
+    //Go to login page method
     public void goToLoginPage(){
         waitVisibility(signInBtn);
         driver.findElement(signInBtn).click();
     }
 
+    //Add item to cart method
     public void addItemToCart(){
         Actions action = new Actions(driver);
         waitVisibility(itemImage);
@@ -56,11 +63,13 @@ public class HomePage extends BasePage{
         driver.findElement(addToCartBtn).click();
     }
 
+    //View cart method
     public void viewCart(){
         waitVisibility(viewCartBtn);
         driver.findElement(viewCartBtn).click();
     }
 
+    //Navigate page method
     public void navigate(){
         Actions action = new Actions(driver);
         waitVisibility(categoty);
@@ -68,6 +77,7 @@ public class HomePage extends BasePage{
         driver.findElement(subcategory).click();
     }
 
+    //Get category name method
     public String getCategoryName () {
         waitVisibility(categogyName);
         return driver.findElement(categogyName).getText();

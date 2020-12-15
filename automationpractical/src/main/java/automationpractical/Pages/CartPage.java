@@ -14,21 +14,25 @@ public class CartPage extends BasePage{
         super(driver);
     }
 
+    //Increasing quantity method 
     public void clickIncreaseQuantityBtn() {
         waitVisibility(addBtn);
         driver.findElement(addBtn).click();
     }
 
+    //Get unit price method
     public String getUnitPrice() {
         waitVisibility(unitPrice);
         return driver.findElement(unitPrice).getText();
     }
 
+    //Get quantity method
     public String getQuantity(){
         waitVisibility(quantity);
         return driver.findElement(quantity).getAttribute("value");
     }
 
+    //Calculate total method
     public double calculateTotal(){
 
         double total = 0;
@@ -40,6 +44,7 @@ public class CartPage extends BasePage{
         return total;
     }
 
+    //Get total price method
     public double getTotalPrice() {
         waitVisibility(totalPrice);
         double total = Double.parseDouble(driver.findElement(totalPrice).getText().replace("$", ""));
