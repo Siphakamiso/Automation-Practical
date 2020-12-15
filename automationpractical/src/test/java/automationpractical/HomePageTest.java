@@ -41,10 +41,19 @@ public class HomePageTest extends BaseTest{
         jsonObject = TestdataManager.readTestDataFile("Search");
 
         homePage = new HomePage(driver);
-        homePage.search(jsonObject.get("searchItem").toString());
+        homePage.search(jsonObject.get("searchItem").getAsString());
         
-        assertTrue(homePage.getSearchResults().contains(jsonObject.get("searchItem").toString()));
+        assertTrue(homePage.getSearchResults().contains(jsonObject.get("searchItem").getAsString()));
 
+    }
+
+    @Test
+    public void navigatePage(){
+        homePage = new HomePage(driver);
+
+        homePage.navigate();
+
+        assertTrue(homePage.getCategoryName().contains("EVENING DRESSES"));
     }
 
 }
